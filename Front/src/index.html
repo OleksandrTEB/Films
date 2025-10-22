@@ -7,25 +7,32 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <main>
-        <div class="cotainer">
-            <div class="films">
-                <div class="film pozucony">
-                    <img src="./assets/film1.png" data-film="skazane" alt="Film1">
-                </div>
-                <div class="film obejzane">
-                    <img src="./assets/film2.png" data-film="zielona" alt="Film2">
-                </div>
-                <div class="film no_review">
-                    <img src="./assets/film3.png" data-film="forrest" alt="Film3">
+<main>
+    <div class="container">
+        <div class="films">
+            <div class="film pozucony">
+                <div class="base-border">
+                    <img src="./assets/film1.png" data-poster="skazane" alt="Film1">
                 </div>
             </div>
+            <div class="film obejzane">
+                <div class="base-border">
+                    <img src="./assets/film2.png" data-poster="zielona" alt="Film2">
+                </div>
+            </div>
+            <div class="film no_review">
+                <div class="base-border">
+                    <img src="./assets/film3.png" data-poster="forrest" alt="Film3">
+                </div>
+            </div>
+        </div>
 
-            <div class="film-info">
-                <div class="border">
-                    <div class="conatiner">
+        <div class="film-info">
+            <div class="border">
+                <div class="base-border">
+                    <div class="container">
                         <div class="film">
-                            <img src="./assets/film1.png">
+                            <img class="img_poster" src="" alt="Film3">
                         </div>
 
                         <div class="content">
@@ -37,24 +44,30 @@
                             <div class="borders">
                                 <div class="status">
                                     <div class="review_status">
-                                        <input type="checkbox" name="status" id="status">
-                                        <div class="text">Pożucone</div>
+                                        <div class="review_btn" data-status="checked">✅ Obejrzane</div>
+                                        <div class="review_btn" data-status="closed">❌ Porzucone</div>
+                                        <div class="review_btn" data-status="no_review">🔲 Nie oceniono</div>
                                     </div>
 
-                                    <div class="ocena">6</div>
+                                    <div class="ocena">⭐ 6</div>
+                                    <div class="rating_form">
+                                        <input type="number" min="1" max="10" name="rating" class="rating">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="description">
                                 <div class="zanr">Dramat</div>
                                 <div class="year">1999</div>
-                                <div class="rating"> 8.9</div>
+                                <div class="rating">⭐ 8.9</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
+<script src="./script.js"></script>
 </body>
 </html>
