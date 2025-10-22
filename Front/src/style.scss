@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(58, 58, 58);
+}
+
+main {
+    .cotainer {
+        width: 70%;
+        margin: 5rem auto;
+
+        .films {
+            display: none;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .film {
+                background: #858585;
+                background: linear-gradient(180deg, rgba(133, 133, 133, 1) 38%, rgba(255, 0, 0, 1) 100%);
+                border-radius: 10px;
+                padding: 15px;
+
+                img {
+                    object-fit: cover;
+                    width: 18vw;
+                }
+            }
+
+            .pozucony {
+                background: #c2b6b9;
+                background: linear-gradient(180deg,rgba(194, 182, 185, 0.95) 34%, rgba(237, 83, 83, 1) 100%);
+            }
+
+            .obejzane {
+                background: #858585;
+                background: linear-gradient(180deg, rgba(133, 133, 133, 1) 38%, rgba(9, 227, 16, 1) 100%);
+            }
+
+            .no_review {
+                background: #858585;
+                background: linear-gradient(180deg,rgba(133, 133, 133, 1) 38%, rgba(255, 255, 255, 1) 100%);
+            }
+        }
+
+        .film-info {
+            display: block;
+            color: white;
+            .border {
+                border-radius: 10px;
+                background: #000000;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 1) 38%, rgba(255, 0, 0, 1) 100%);
+                padding: 10px;
+                
+                .conatiner {
+                    display: flex;
+                    flex-direction: row;
+                    background: #bfac7a;
+                    background: linear-gradient(180deg, rgba(191, 172, 122, 1) 38%, rgba(41, 31, 31, 1) 100%);
+                    
+                    .film {
+                        img {
+                            object-fit: cover;
+                            width: 17vw;
+                        }
+                    }
+
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        padding: 20px;
+
+                        .title {
+                            height: 60%;
+
+                            p {
+                                color: #000000;
+                            }
+                        }
+
+                        .borders {
+                            padding: 10px;
+                            height: 30%;
+                            border-top: 2px solid rgba(191, 172, 122, 1);
+                            border-bottom: 2px solid rgba(191, 172, 122, 1);
+
+                            .status {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: space-between;
+                                color: #000000;
+                                height: 100%;
+                                background-color: #fdfdfd;
+                                border-radius: 40px;
+                                padding: 20px;
+
+                                .review_status {
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    gap: 5px;
+
+                                    .text {
+                                        font-weight: 500;
+                                    }
+                                }
+
+                                .ocena {
+                                    font-size: 2rem;
+                                }
+                            }
+                        }
+
+                        .description {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            height: 10%;
+
+                            .rating {
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
