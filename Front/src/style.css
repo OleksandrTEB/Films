@@ -1,8 +1,14 @@
+@font-face {
+  font-family: "Custom";
+  src: url("./styles/fonts/NetflixSans-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Custom;
   outline: none;
   border: transparent;
 }
@@ -37,9 +43,32 @@ main .container .films .film .base-border img {
   object-fit: cover;
   width: 18vw;
 }
+main .container .films .closed {
+  background: #c2b6b9;
+  background: linear-gradient(180deg, rgba(194, 182, 185, 0.95) 34%, rgb(237, 83, 83) 100%);
+}
+main .container .films .checked {
+  background: RGBA(36, 80, 37, 1);
+  background: linear-gradient(180deg, rgb(36, 80, 37) 31%, rgb(128, 205, 118) 75%);
+}
+main .container .films .no_review {
+  background: RGBA(60, 60, 60, 1);
+  background: linear-gradient(180deg, rgb(60, 60, 60) 31%, rgb(208, 208, 208) 75%);
+}
 main .container .film-info {
   display: none;
   color: white;
+  animation: showDetalis 1s forwards ease-in-out;
+}
+@keyframes showDetalis {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 main .container .film-info .border {
   background: RGBA(54, 24, 24, 1);

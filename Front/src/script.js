@@ -1,30 +1,8 @@
 const body = document.querySelector('body');
 
-const review_btn = document.querySelectorAll(".review_btn");
+let current_film = 0;
 
-const arr_review_btn = Array.from(review_btn)
-
-const status = localStorage.getItem("status");
-
-if (status) {
-    arr_review_btn.forEach((btn) => {
-        if (btn.dataset.status !== status) {
-            btn.style.display = "none";
-        }
-    })
-} else {
-    for (let i = 0; i < arr_review_btn.length; i++) {
-        arr_review_btn[i].addEventListener("click", (e) => {
-            arr_review_btn.forEach((btn) => {
-                if (btn.dataset.status === e.target.dataset.status) {
-                    localStorage.setItem("status", btn.dataset.status);
-                } else {
-                    btn.style.display = "none";
-                }
-            })
-        })
-    }
-}
+const arr_review_buttons = Array.from(document.querySelectorAll(".review_btn"))
 
 const posters = document.querySelectorAll("[data-poster]")
 const film_info = document.querySelector(".film-info")
@@ -33,18 +11,118 @@ const img_poster = document.querySelector(".img_poster")
 
 let arr_posters = Array.from(posters)
 
+const arr_all_films = Array.from(document.querySelectorAll(".film"));
+
+
+function updateStatus() {
+    if (checkData()) {
+        const data = JSON.parse(localStorage.getItem("films_reviews"));
+
+        data.forEach(review => {
+            arr_all_films.forEach(film => {
+                if (+film.dataset.id === review.id) {
+                    film.classList.add(review.status);
+                }
+            })
+        })
+
+        arr_all_films.forEach(film => {
+            if (film.classList.length <= 1) {
+                film.classList.add("no_review");
+            }
+        })
+
+    } else {
+        arr_all_films.forEach(film => {
+            film.classList.add("no_review");
+        })
+    }
+}
+
+function checkData() {
+    return !!localStorage.getItem("films_reviews");
+}
+
 for (let i = 0; i < posters.length; i++) {
     arr_posters[i].addEventListener("mousemove", (e) => {
         film_info.style.display = "block";
         films.style.display = "none";
         img_poster.src = arr_posters[i].src;
 
+        let parentElement = arr_posters[i].parentElement.parentElement;
+
+        current_film = +parentElement.dataset.id;
+
+        const data = JSON.parse(localStorage.getItem("films_reviews"));
+
+        if (checkData()) {
+            data.forEach(review => {
+                if (current_film === review.id) {
+                    arr_review_buttons.forEach(button => {
+                        if (button.dataset.status !== review.status) {
+                            button.style.display = "none";
+                        }
+                    })
+                }
+            })
+        }
+
         const poser_info = document.querySelector(".border")
         poser_info.addEventListener("mouseleave", () => {
             film_info.style.display = "none";
             films.style.display = "grid";
+
+            arr_review_buttons.forEach(button => {
+                button.style.display = "block";
+            })
+
+            updateStatus()
         })
     })
+}
+
+for (let i = 0; i < arr_review_buttons.length; i++) {
+    arr_review_buttons[i].addEventListener("click", (e) => {
+        const data = JSON.parse(localStorage.getItem("films_reviews"));
+
+        let localData = [];
+
+        if (checkData()) {
+            localData = data;
+        }
+
+        const btn_status = e.target.dataset.status;
+
+        const user_data = {
+            id: current_film,
+            status: btn_status
+        }
+
+        localData.push(user_data)
+
+        if (checkClon(current_film)) {
+            localStorage.setItem("films_reviews", JSON.stringify(localData));
+        }
+    })
+}
+
+function checkClon(id) {
+    if (!checkData()) return true;
+
+    const data = JSON.parse(localStorage.getItem("films_reviews"));
+
+    let isset = false;
+
+    data.forEach(review => {
+        console.log('Rewiew id: ', review.id);
+        console.log('ID: ', id);
+        if (review.id === id) {
+            isset = true;
+        }
+    })
+
+    return !isset;
+
 }
 
 const ocena_btn = document.querySelector(".ocena");
@@ -62,3 +140,8 @@ ocena_btn.addEventListener("click", (e) => {
         })
     }, 1000)
 })
+
+function init() {
+    updateStatus()
+}
+init();
