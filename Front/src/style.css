@@ -71,8 +71,6 @@ main .container .film-info {
   }
 }
 main .container .film-info .border {
-  background: RGBA(54, 24, 24, 1);
-  background: linear-gradient(180deg, rgb(54, 24, 24) 31%, rgb(205, 118, 118) 75%);
   border-radius: 10px;
   padding: 3px;
   margin: auto;
@@ -168,6 +166,18 @@ main .container .film-info .border .base-border .container .content .description
 }
 main .container .film-info .border .base-border .container .content .description .rating {
   font-size: 24px;
+}
+main .container .film-info .closed {
+  background: #c2b6b9;
+  background: linear-gradient(180deg, rgba(194, 182, 185, 0.95) 34%, rgb(237, 83, 83) 100%);
+}
+main .container .film-info .checked {
+  background: RGBA(36, 80, 37, 1);
+  background: linear-gradient(180deg, rgb(36, 80, 37) 31%, rgb(128, 205, 118) 75%);
+}
+main .container .film-info .no_review {
+  background: RGBA(60, 60, 60, 1);
+  background: linear-gradient(180deg, rgb(60, 60, 60) 31%, rgb(208, 208, 208) 75%);
 }
 
 .pozucony {

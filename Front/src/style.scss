@@ -1,12 +1,8 @@
 @use './styles/fonts/font' as *;
+@use './styles/global' as *;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Custom;
-  outline: none;
-  border: transparent;
+  @include base-for-all-elements;
 }
 
 body {
@@ -44,18 +40,15 @@ main {
       }
 
       .closed {
-        background: #c2b6b9;
-        background: linear-gradient(180deg, rgba(194, 182, 185, 0.95) 34%, rgba(237, 83, 83, 1) 100%);
+        @include closed-status;
       }
 
       .checked {
-        background: RGBA(36, 80, 37, 1);
-        background: linear-gradient(180deg, rgba(36, 80, 37, 1) 31%, rgba(128, 205, 118, 1) 75%);
+        @include checked-status;
       }
 
       .no_review {
-        background: RGBA(60, 60, 60, 1);
-        background: linear-gradient(180deg, rgba(60, 60, 60, 1) 31%, rgba(208, 208, 208, 1) 75%);
+        @include no_review-status;
       }
     }
 
@@ -76,8 +69,6 @@ main {
       }
 
       .border {
-        background: RGBA(54, 24, 24, 1);
-        background: linear-gradient(180deg, rgba(54, 24, 24, 1) 31%, rgba(205, 118, 118, 1) 75%);
         border-radius: 10px;
         padding: 3px;
         margin: auto;
@@ -192,6 +183,18 @@ main {
             }
           }
         }
+      }
+
+      .closed {
+        @include closed-status;
+      }
+
+      .checked {
+        @include checked-status;
+      }
+
+      .no_review {
+        @include no_review-status;
       }
     }
   }

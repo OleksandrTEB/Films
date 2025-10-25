@@ -1,0 +1,23 @@
+@mixin base-for-all-elements {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Custom;
+  outline: none;
+  border: transparent;
+}
+
+@mixin closed-status {
+  background: #c2b6b9;
+  background: linear-gradient(180deg, rgba(194, 182, 185, 0.95) 34%, rgba(237, 83, 83, 1) 100%);
+}
+
+@mixin checked-status {
+  background: RGBA(36, 80, 37, 1);
+  background: linear-gradient(180deg, rgba(36, 80, 37, 1) 31%, rgba(128, 205, 118, 1) 75%);
+}
+
+@mixin no_review-status {
+  background: RGBA(60, 60, 60, 1);
+  background: linear-gradient(180deg, rgba(60, 60, 60, 1) 31%, rgba(208, 208, 208, 1) 75%);
+}

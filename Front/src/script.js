@@ -8,6 +8,7 @@ const posters = document.querySelectorAll("[data-poster]")
 const film_info = document.querySelector(".film-info")
 const films = document.querySelector(".films")
 const img_poster = document.querySelector(".img_poster")
+const border = document.querySelector(".border");
 
 let arr_posters = Array.from(posters)
 
@@ -17,6 +18,10 @@ const arr_all_films = Array.from(document.querySelectorAll(".film"));
 function updateStatus() {
     if (checkData()) {
         const data = JSON.parse(localStorage.getItem("films_reviews"));
+
+        arr_all_films.forEach(film => {
+            deleteClassList(film)
+        })
 
         data.forEach(review => {
             arr_all_films.forEach(film => {
@@ -43,6 +48,21 @@ function checkData() {
     return !!localStorage.getItem("films_reviews");
 }
 
+function deleteClassList(element) {
+    const border_class_list = element.classList
+
+
+    if (border_class_list.contains("checked")) {
+        border_class_list.remove("checked");
+    }
+    else if (border_class_list.contains("closed")) {
+        border_class_list.remove("closed");
+    }
+    else if (border_class_list.contains("no_review")) {
+        border_class_list.remove("no_review");
+    }
+}
+
 for (let i = 0; i < posters.length; i++) {
     arr_posters[i].addEventListener("mousemove", (e) => {
         film_info.style.display = "block";
@@ -58,19 +78,30 @@ for (let i = 0; i < posters.length; i++) {
         if (checkData()) {
             data.forEach(review => {
                 if (current_film === review.id) {
+                    deleteClassList(border)
+                    border.classList.add(review.status);
                     arr_review_buttons.forEach(button => {
                         if (button.dataset.status !== review.status) {
                             button.style.display = "none";
                         }
                     })
+                } else {
+                    if (border.classList.length <= 1) {
+                        border.classList.add('no_review');
+                    }
                 }
             })
+        } else {
+            border.classList.add('no_review');
         }
+
 
         const poser_info = document.querySelector(".border")
         poser_info.addEventListener("mouseleave", () => {
             film_info.style.display = "none";
             films.style.display = "grid";
+
+            deleteClassList(border)
 
             arr_review_buttons.forEach(button => {
                 button.style.display = "block";
@@ -114,8 +145,6 @@ function checkClon(id) {
     let isset = false;
 
     data.forEach(review => {
-        console.log('Rewiew id: ', review.id);
-        console.log('ID: ', id);
         if (review.id === id) {
             isset = true;
         }
