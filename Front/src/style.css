@@ -25,6 +25,7 @@ main .container .films {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
+  row-gap: 2rem;
 }
 main .container .films .film {
   background: RGBA(54, 24, 24, 1);
@@ -40,7 +41,8 @@ main .container .films .film .base-border {
   border-radius: 8px;
 }
 main .container .films .film .base-border img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 18vw;
 }
 main .container .films .closed {
@@ -93,7 +95,8 @@ main .container .film-info .border .base-border .container .film {
   width: 372px;
 }
 main .container .film-info .border .base-border .container .film img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 17vw;
 }
 main .container .film-info .border .base-border .container .content {
@@ -178,21 +181,4 @@ main .container .film-info .checked {
 main .container .film-info .no_review {
   background: RGBA(60, 60, 60, 1);
   background: linear-gradient(180deg, rgb(60, 60, 60) 31%, rgb(208, 208, 208) 75%);
-}
-
-.pozucony {
-  background: #c2b6b9;
-  background: linear-gradient(180deg, rgba(194, 182, 185, 0.95) 34%, rgb(237, 83, 83) 100%);
-}
-
-.obejzane {
-  background: RGBA(36, 80, 37, 1);
-  background: linear-gradient(180deg, rgb(36, 80, 37) 31%, rgb(128, 205, 118) 75%);
-}
-
-.no_review {
-  background: RGBA(60, 60, 60, 1);
-  background: linear-gradient(180deg, rgb(60, 60, 60) 31%, rgb(208, 208, 208) 75%);
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

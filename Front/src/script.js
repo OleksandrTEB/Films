@@ -174,3 +174,36 @@ function init() {
     updateStatus()
 }
 init();
+
+
+let films_data = [
+    {
+
+    }
+]
+
+
+
+function createCard() {
+    const films = document.querySelector(".films")
+
+    const film = document.createElement('div')
+    film.classList.add('film')
+
+    films.appendChild(film)
+
+    const base_border = document.createElement('div')
+    base_border.classList.add('base-border')
+
+    film.appendChild(base_border)
+
+    const img = document.createElement('img')
+    img.src = './assets/film3.png'
+    img.dataset.poster = 'forrest'
+
+    base_border.appendChild(img)
+
+    console.log(films);
+}
+
+createCard()
